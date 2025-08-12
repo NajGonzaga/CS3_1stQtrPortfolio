@@ -1,8 +1,11 @@
 <script>
     let age = window.promt("Enter your age", "15");
     let maxAge = window.promt("Enter the age you need to reach, "100");
-    let numPerDay = window.promt("Enter the amount of fries you eat in a day", "1");
-    let sure = window.console ("")
+    let numPerDay = window.promt("How many Barbeque and Sour Cream fries do you want to eat pero day?", "5");
+    let sure = window.console ("Is your $(age), $(maxAge), and $(numPerDay), to be confirmed?");
+
+    totalRequired = (numPerDay * 365) * (maxAge - age);
+
     document.write("You will need " + totalRequired + "Barbeque and Sour Cream flavoured fries", " to last you until your old age of " + maxAge + ".");
 
 </script>
