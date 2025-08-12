@@ -2,10 +2,10 @@
     let age = window.promt("Enter your age", "15");
     let maxAge = window.promt("Enter the age you need to reach, "100");
     let numPerDay = window.promt("How many Barbeque and Sour Cream fries do you want to eat pero day?", "5");
-    let sure = window.console ("Is your $(age), $(maxAge), and $(numPerDay), to be confirmed?");
-
-    var totalRequired = (numPerDay * 365) * (maxAge - age);
-
-    document.write("You will eat " + totalRequired + "Barbeque and Sour Cream flavoured fries", " to last you until your old age of " + maxAge + ".");
+    if (window.confirm ("Is your $(age), $(maxAge), and $(numPerDay), to be confirmed?")); {
+        let totalRequired = (numPerDay * 365) * (maxAge - age);
+        console.log("You will eat " + totalRequired + "Barbeque and Sour Cream flavoured fries", " to last you until your old age of " + maxAge + ".");
+    }
+    
      
 </script>
