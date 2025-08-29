@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+<body>
+
+   <h2> Q1 3rd Graded Exercise submitted by Naj Gonzaga of 9-Potassium</h2>
+
+    <div>
+        <p>Guess the number: **</p>
+        <p>The number is from 1 to 100</p>
+    </div>
+    <div>Enter your guess:
+        <input id="my_guess"/>
+   </div>
+   <div>
+        <button id="btn_submit" onclick="checkIt();">Check it</button>
+    </div>
+    <div>Result:
+        <p id="the_result"></p>
+     </div>
+
+    <script>
+
+       var dNumber = Math.floor(Math.random() * 100) + 1; // generates a number from 1  to 100 when the page loads
+
+function checkIt() {
+    var my_guess = document.getElementById("my_guess").value; 
+        // Check if the guess is correct, too high, or too low
+
+            if(my_guess == dNumber) { 
+                document.getElementById("the_result").innerHTML = "You guessed the correct number!"
+            }  else if(my_guess < dNumber) {
+                document.getElementById("the_result").innerHTML = "You need to guess higher, sorry!"
+            } else if (my_guess > dNumber) {
+                document.getElementById("the_result").innerHTML = "You need to guess lower, sorry!"
+            } 
+
+        }
+    </script>
+
+</body>
+
+</html>

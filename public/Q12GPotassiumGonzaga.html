@@ -3,18 +3,15 @@
 <body>
 
     <h2> Q1 2nd Graded Exercise submitted by Naj Gonzaga of 9-Potassium</h2>
-
-
-    
     
     <div>Meal Price:
-         <input id=""my_mealPrice">
+         <input id="my_mealPrice">
    </div>
    <div>Tip:
-        <input id=""my_tip">
+        <input id="my_tip">
    </div>
    <div>Service Charge:
-        <input id=""my_serviceCharge">
+        <input id="my_serviceCharge">
    </div>
         <button id="btn_submit">Submit</button>
     
@@ -24,15 +21,21 @@
         const tip = document.getElementById("my_tip");
         const sc = document.getElementById("my_serviceCharge");
         const btn = document.getElementById("btn_submit");
-        btn.addEventListener('click', btn_clicked)
+        btn.addEventListener('click', totalMeal);
         
         function totalMeal() {
-            var totalCost=0;
+            // Parse input values as floats
+            const mealPrice = parseFloat(mp.value) || 0;
+            const tipValue = parseFloat(tip.value) || 0;
+            const serviceCharge = parseFloat(sc.value) || 0;
 
-            totalCost = mp + tip (sc / 100 * mp);
-            alert("totalMeal: ", totalCost();
-         
+            // Calculate total cost
+            const totalCost = mealPrice + tipValue + (serviceCharge / 100 * mealPrice);
+
+            // Display the total cost in an alert
+            alert("Total Meal Cost: " + totalCost.toFixed(2));
         }
+        
     </script>
 
 </body>
