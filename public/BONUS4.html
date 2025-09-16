@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+  body {
+    background-image: url("../blueb.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 120px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    
+  }
+  #wordDisplay {
+    font-size: 100px;
+    letter-spacing: 10px;
+    margin-bottom: 20px;
+    size: 50px;
+    color: rgb(255, 255, 255);
+    font-family:'Times New Roman', Times, serif;
+    filter: drop-shadow(0 0 50px rgb(255, 255, 255));
+    text-shadow: 50px 50px 50px rgb(255, 255, 255);
+  
+  }
+  #message {
+    font-size: 20px;
+    margin-top: 20px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(255, 233, 39);
+    filter: drop-shadow(0 0 20px rgb(255, 255, 255));
+  }
+  #attempts {
+    font-size: 16px;
+    margin-top: 10px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(250, 219, 98);
+    filter: drop-shadow(0 0 10px rgb(255, 255, 255));
+  }
+  strong {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(37, 41, 178);
+    filter: drop-shadow(0 0 10px rgb(255, 255, 255));
+  }
+
+  h1 {
+    color: rgb(249, 233, 94);
+    text-shadow: 2px 0 rgb(232, 198, 85), 0 2px rgb(232, 198, 85), 2px 0 rgb(232, 198, 85), 0 2px rgb(232, 198, 85);
+    font-size: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+    filter: drop-shadow(0 0 10px rgb(255, 255, 255));
+  }
+
+   button {
+    background-color: rgb(245, 214, 91);
+    border: none;
+    color: rgb(136, 182, 231);
+    padding: 10px 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    filter: drop-shadow(0 0 10px rgb(255, 255, 255));
+  
+  }
+  button:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(245, 214, 91);
+    transform: scale(1.1);
+    transition: 0.5s;
+    filter: drop-shadow(0 0 10px rgb(255, 255, 255));
+  }
+  input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid #f6cf5c;
+    width: 50px;
+    text-align: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  
+</style>
+<body>
+<h1>—͟͟͞͞★ Guess My Word﹗</h1>
+<p id="wordDisplay"></p>
+<input type="text" id="guessInput" maxlength="1">
+<button onclick="makeGuess()">Guess!</button>
+<p id="message"></p>
+<p id="attempts"></p>
+<p><strong>Letters used:</strong> <span id="usedLetters"></span></p>
+<div class="box"></div>
+
+<script>
+  let secretWord = ["n", "o", "n", "c", "h", "a", "l", "a", "n", "t", "n", "a", "j"];
+  let guessedWord = Array(secretWord.length).fill("_");
+  let attemptsLeft = 3;
+  let usedLetters = [];
+
+  document.getElementById("wordDisplay").textContent = guessedWord.join(" ");
+  document.getElementById("attempts").textContent = `Attempts left: ${attemptsLeft}`;
+
+  function makeGuess() {
+    let guess = document.getElementById("guessInput").value.toLowerCase();
+
+    if (!guess || usedLetters.includes(guess)) {
+      document.getElementById("guessInput").value = "";
+      return;
+    }
+
+    usedLetters.push(guess);
+    document.getElementById("usedLetters").textContent = usedLetters.join(", ");
+
+    let correct = false;
+
+    for (let i = 0; i < secretWord.length; i++) {
+      if (secretWord[i] === guess) {
+        guessedWord[i] = guess;
+        correct = true;
+      }
+    }
+
+    document.getElementById("wordDisplay").textContent = guessedWord.join(" ");
+
+    if (correct) {
+      document.getElementById("message").textContent = "ദ്ദി(˵ •̀ ᴗ - ˵ ) ✧ Correct﹗";
+    } else {
+      attemptsLeft--;
+      document.getElementById("message").textContent = "𒆙 Try again.";
+      document.getElementById("attempts").textContent = `Attempts left: ${attemptsLeft}`;
+    }
+
+    if (!guessedWord.includes("_")) {
+      document.getElementById("message").textContent = "(੭˃ᴗ˂)੭ You guessed the word﹗ yipieeeeee﹗";
+      document.getElementById("guessInput").disabled = true;
+    } else if (attemptsLeft <= 0) {
+      document.getElementById("message").textContent = "·°՞(っ-ᯅ-ς)՞°· Game over. . .  The word was: " + secretWord.join("");
+      document.getElementById("guessInput").disabled = true;
+    }
+
+    document.getElementById("guessInput").value = "";
+  }
+</script>
+
+
+</body>
+</html>
