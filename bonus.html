@@ -20,29 +20,35 @@
         );
         background-size: 200% auto;
         background-clip: text;
-        text-fill-color: transparent;
+        text-emphasis-color: transparent;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         animation: animate 7s ease-in-out infinite;
         display: inline-block;
         font-size: 111px;
+
         @keyframes animate (
         
         0% {
-        background-position: 0% center;
+            background-position: 0% center;
         }
-        25% (
-        background-position: 50% center;
-        }
-        50% (
-        background-position: 100% center;
-        }
-        75% (
-        background-position: 50% center;
-        }
-        100% {
-        background-position: 0% center;
 
+        25% {
+            background-position: 50% center;
+        }
+
+        50% {
+            background-position: 100% center;
+        }
+
+        75% {
+            background-position: 50% center;
+        }
+
+        100% {
+            background-position: 0% center;
+        }
+        
        }
        
        
