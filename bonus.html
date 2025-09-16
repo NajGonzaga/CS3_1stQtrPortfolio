@@ -1,0 +1,81 @@
+<style>
+    
+    div
+    {
+    font-size: 75px; 
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    text-align center
+    }
+
+    h1{
+        font-family: "Poppins", sans-serif;
+        font-weight: 900;
+        background-image: linear-gradient( 45deg,
+        affcda5 0%,
+        #ee4d5f 25%,
+        #f869d5 50%,
+        #8131f7 75%,
+        #6c8aff 100%
+
+        );
+        background-size: 200% auto;
+        background-clip: text;
+        text-fill-color: transparent;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: animate 7s ease-in-out infinite;
+        display: inline-block;
+        font-size: 111px;
+        @keyframes animate (
+        
+        0% {
+        background-position: 0% center;
+        }
+        25% (
+        background-position: 50% center;
+        }
+        50% (
+        background-position: 100% center;
+        }
+        75% (
+        background-position: 50% center;
+        }
+        100% {
+        background-position: 0% center;
+
+       }
+       
+       
+    
+</style>
+
+<div>
+<h1>Guess My Word</h1>
+<p id="wordDisplay"></p>
+<input type="text" id="guessInput" maxlength="1">
+<button onclick="makeGuess()">Guess</button>
+<p id="message"></p>
+</div>
+
+<script>
+  let secretWord = ["i", "l", "o", "v","e","g", "i", "y", "u", "u"];
+  let guessedWord = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_"];
+
+  document.getElementById("wordDisplay").textContent = guessedWord.join(" ");
+
+  function makeGuess() {
+    let guess = document.getElementById("guessInput").value.toLowerCase();
+    let correct = false;
+
+    for (let i = 0; i < secretWord.length; i++) {
+      if (secretWord[i] === guess) {
+        guessedWord[i] = guess;
+        correct = true;
+      }
+    }
+
+    document.getElementById("wordDisplay").textContent = guessedWord.join(" ");
+    document.getElementById("message").textContent = correct ? "✅ Correct!" : "❌ Try again.";
+    document.getElementById("guessInput").value = "";
+  }
+</script>
